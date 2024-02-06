@@ -1,0 +1,21 @@
+{% extends 'layouts/home.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div>
+                {% for category in categories %}
+                    <div class="p-2">{{ category }}</div>
+                    {% for dish in category %}
+                        <a href="{% url 'menu_dish' dish.slug dish.pk %}">
+                            {{ dish.name }}
+                        </a>
+                        <div>
+                            <img src="{{dish.photo.url}}" alt="{{ dish.image }}">
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
